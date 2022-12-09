@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import LoginForm from './components/login/LoginForm';
+import MainContent from './components/app/MainContent';
+import Container from '@mui/material/Container';
+
 
 function App() {
+  const [isLogin, setIsLogin] = useState(false)
+
+  useEffect(() => {
+    // 어떤식으로 로그인 여부를 체크할지??
+    // if (localStorage.getItem('jwt')) {
+    //   setIsLogin(true)
+    // } else {
+    //   setIsLogin(false);
+    // }
+  }, [isLogin]);
+
+  const onClickLogin = (id: String, password: String) => {
+    console.log(`id: ${id} / password: ${password}`)
+    setIsLogin(!isLogin)
+    
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxWidth="sm">
+      {/* {isLogin ? 
+        <MainContent /> : 
+        <LoginForm onClickLogin={onClickLogin} />
+      } */}
+      <MainContent />
+    </Container>
   );
 }
 
