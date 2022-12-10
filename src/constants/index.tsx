@@ -5,19 +5,6 @@ import {
     AuthorityType,
 } from "../types"
 
-export const MENU_LIST: Array<IMenuItem> = [
-    {
-        id: 0,
-        title: MenuTitleType.MEMBER,
-        path: '/app/members'
-    },
-    {
-        id: 1,
-        title: MenuTitleType.ACTIVETY,
-        path: '/app/activities'
-    }
-]
-
 export const SAMPLE_MEMBERS: Array<IMember> = [
     {
         id: 1,

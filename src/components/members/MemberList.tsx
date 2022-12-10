@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { SAMPLE_MEMBERS } from '../../../constants';
-import { IMember } from '../../../types';
+import { SAMPLE_MEMBERS } from '../../constants';
+import { IMember } from '../../types';
 import Member from './Member';
 
 function MemberList() {

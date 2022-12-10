@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { IMember } from '../../../types'
-import { SAMPLE_MEMBERS } from '../../../constants'
+import { IMember } from '../../types'
+import { SAMPLE_MEMBERS } from '../../constants'
 
 function Member() {
     

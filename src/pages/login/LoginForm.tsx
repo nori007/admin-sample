@@ -1,14 +1,22 @@
 import React, {useState} from 'react';
+import { useNavigate } from "react-router-dom"
 
-interface IProps {
-    readonly onClickLogin: (id: string, password: string) => void;
-}
-
-
-function LoginForm(props: IProps) {
+function LoginForm() {
 
     const [ id, setId ] = useState("");
     const [ password, setPassword ] = useState("");
+    const navigate = useNavigate();
+
+    const clickEvent = () => {
+        console.log(`id: ${id}, password: ${password}`);
+        setId("");
+        setPassword("");
+
+        setTimeout(() => {
+            sessionStorage.setItem("isAuthorized", "true");
+            navigate("/app");
+        }, 3000);
+    }
 
     return (
         <>
@@ -23,11 +31,7 @@ function LoginForm(props: IProps) {
                 }}/>
             </p>
             <p>
-                <button onClick={() => {
-                    setId("");
-                    setPassword("");
-                    props.onClickLogin(id, password);
-                }}>
+                <button onClick={clickEvent}>
                     로그인
                 </button>
             </p>
