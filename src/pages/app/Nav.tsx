@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { List, ListItemButton, ListItemText } from "@mui/material";
 import { IMenuItem } from '../../types';
 
 type IProps = {
@@ -7,16 +8,30 @@ type IProps = {
 }
 
 function Nav(props: IProps) {
+    // return (
+    //     <ul>
+    //         {props.list.map((item) => {
+    //             return (
+    //                 <li key={item.id}>
+    //                     <Link to={item.path}>{item.title}</Link>
+    //                 </li> 
+    //             )
+    //         })}
+    //     </ul>
+    // )
+
     return (
-        <ul>
-            {props.list.map((item) => {
+        <List component="nav">
+            {props.list.map(item => {
                 return (
-                    <li key={item.id}>
-                        <Link to={item.path}>{item.title}</Link>
-                    </li> 
+                    <Link key={item.id} to={item.path} style={{ textDecoration: 'none' }}>
+                        <ListItemButton>
+                            <ListItemText primary={item.title} />      
+                        </ListItemButton>
+                    </Link>
                 )
             })}
-        </ul>
+        </List>
     )
 }
 

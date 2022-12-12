@@ -5,6 +5,7 @@ export interface IMenuItem {
 }
 
 export enum MenuTitleType {
+    HOME = "HOME",
     MEMBER = "MEMBER",
     ACTIVETY = "ACTIVETY"
 }

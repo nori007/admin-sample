@@ -10,6 +10,7 @@ function AppRoutes() {
 
     useEffect(() => {
         if(!isAuthorized) navigate("/login"); 
+        else navigate("/app")
     }, [])
     
     return (
