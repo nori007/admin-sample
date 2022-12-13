@@ -1,38 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { SAMPLE_MEMBERS } from '../../constants';
 import { IMember } from '../../types';
-import Member from './Member';
+import { 
+    Table, 
+    TableHead, 
+    TableRow, 
+    TableCell, 
+    TableBody 
+} from '@mui/material';
+import { getMembers } from '../../service/requestMember';
 
 function MemberList() {
     const { id } = useParams();
+    const [ members, setMembers ] = useState<IMember[]>([]);
 
-    const getMemberList = () => {
-        return (
-            <ul>
-                {SAMPLE_MEMBERS.map((member: IMember) => {
-                    return (
-                        <li key={member.id}>
-                            <p>
-                                {`${member.id} // ${member.loginId}`}
-                                <Link to={`./${member.id}`}>상세보기</Link>
-                            </p>
-                        </li>
-                    ) 
-                })}
-            </ul>
-        )
-    }
+    useEffect(() => {
+        getMembers().then(data => {
+            console.log(data);
+            setMembers(data);
+        });
+    }, [])
 
     return (
-        <>
-            <h3>맴버 리스트 페이지</h3>
-            {
-                id ?
-                <Member /> :
-                getMemberList()
-            }
-        </>
+        <Table stickyHeader size="small">
+            <TableHead>
+                <TableRow>
+                    <TableCell>id</TableCell>
+                    <TableCell>loginId</TableCell>
+                    <TableCell>name</TableCell>
+                    <TableCell>email</TableCell>
+                    <TableCell>authority</TableCell>
+                    <TableCell>자세히</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {members.map((member: IMember) => {
+                    return (
+                        <TableRow key={member.id}>
+                            
+                            <TableCell>{member.id}</TableCell>
+                            <TableCell>{member.loginId}</TableCell>
+                            <TableCell>{member.name}</TableCell>
+                            <TableCell>{member.authority}</TableCell>
+                            <TableCell>{member.email}</TableCell>
+                            <TableCell>
+                                <Link to={`./${member.id}`}>
+                                    상세보기
+                                </Link>
+                            </TableCell>
+                        </TableRow>
+                    )
+                })}
+            </TableBody>
+        </Table>
     )
 }
 

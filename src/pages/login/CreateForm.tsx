@@ -7,7 +7,7 @@ import {
     Button 
 } from '@mui/material';
 
-function LoginForm() {
+function CreateForm() {
     const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -49,22 +49,31 @@ function LoginForm() {
                     id="password"
                     autoComplete="current-password"
                 />
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="name"
+                    label="name"
+                    name="name"
+                />
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="email"
+                    name="email"
+                />
                  <Button
                     type="submit"
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
-                >로그인</Button>
-                <Button
-                    type="button"
-                    fullWidth
-                    variant="contained"
-                    onClick={handleCreate}
-                    sx={{ mt: 0, mb: 2 }}
                 >회원가입</Button>
             </Box>
         </Container>
     )
 }
 
-export default LoginForm;
+export default CreateForm;

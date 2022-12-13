@@ -8,6 +8,7 @@ import Dashboard from '../../components/dashboard/Dashboard';
 import MemberList from '../../components/members/MemberList';
 import ActivityList from '../../components/activites/ActivityList';
 import Member from '../../components/members/Member';
+import MemberForm from './MemberForm';
 
 export const MENU_LIST: Array<IMenuItem> = [
     {
@@ -38,8 +39,8 @@ function MainForm() {
                 <Grid item xs={8}>
                     <Routes>
                         <Route path="/" element={<Dashboard />} />
-                        <Route path="members" element={<MemberList />} >
-                            <Route path=":id" element={<Member />} />
+                        <Route path="members" element={<MemberForm />} >
+                            <Route path=":id" element={null}/>
                         </Route>
                         <Route path="activities" element={<ActivityList />} />
                     </Routes>

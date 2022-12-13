@@ -1,7 +1,6 @@
+import axios from "axios";
 
-
-function requestLogin() {
+export async function requestLogin() {
     return true
-}
-
-export default requestLogin;
+    // return await axios();
+};

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import LoginForm from './login/LoginForm';
+import CreateForm from './login/CreateForm';
 import MainForm from '../pages/app/MainForm';
 import NotFound from './NotFound';
 
@@ -17,6 +18,7 @@ function AppRoutes() {
         <>
             <Routes>
                 <Route path="/login" element={<LoginForm />} />
+                <Route path="/create" element={<CreateForm />} />
                 <Route path="/app/*" element={<MainForm />}> 
                 </Route>
                 <Route path="*" element={<NotFound />}></Route>

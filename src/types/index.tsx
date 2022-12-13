@@ -14,6 +14,7 @@ export interface IMember {
     id: number,
     loginId: string
     name: string,
+    email: string,
     authority: AuthorityType,
 }
 
